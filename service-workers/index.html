@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <div style="text-align:center; margin-top:40px;">
+        <p>Registration status: <strong id="status"></strong></p>
+    </div>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js').then(function(serviveWorker) {
+                document.getElementById('status').innerHTML = "successful";
+            }).catch(function(error) {
+                document.getElementById('status').innerHTML = error;
+            });
+        }
+        else {
+            document.getElementById('status').innerHTML = "unavailable";
+        }
+
+    </script>
+</body>
+
+</html>
