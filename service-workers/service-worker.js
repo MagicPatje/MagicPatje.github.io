@@ -1,28 +1,55 @@
+'use strict';
+
+var version = 1;
+var currentCache = {
+  offline: 'offline-cache' + version
+};
+
+var offlineUrl = 'offline.html';
+
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open(currentCache.offline).then(function(cache) {
+      return cache.addAll([
+        offlineUrl
+      ]);
+    })
+  );
+});
+
 self.addEventListener('fetch', function(event) {
-  var requestUrl = new URL(event.request.url);
+  var request = event.request,
+    isRequestMethodGET = request.method === 'GET';
 
-  if (requestUrl.pathname === '/urlshortener/v1/url' &&
-      event.request.headers.has('X-Mock-Response')) {
-
-    var response = {
-      body: {
-        kind: 'urlshortener#url',
-        id: 'https://goo.gl/KqR3lJ',
-        longUrl: 'https://www.packtpub.com/books/info/packt/about'
-      },
-      init: {
-        status: 200,
-        statusText: 'OK',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Mock-Response': 'yes'
-        }
-      }
-    };
-
-    var mockResponse = new Response(JSON.stringify(response.body), response.init);
-
-    console.log('Mock Response: ', response.body);
-    event.respondWith(mockResponse);
+  if (request.mode === 'navigate' || isRequestMethodGET) {
+    event.respondWith(
+      fetch(createRequestWithCacheBusting(request.url)).catch(function(error) {
+        console.log('OFFLINE: Returning offline page.', error);
+        return caches.match(offlineUrl);
+      })
+    );
+  } else {
+    event.respondWith(caches.match(request)
+        .then(function (response) {
+        return response || fetch(request);
+      })
+    );
   }
 });
+function createRequestWithCacheBusting(url) {
+  var request,
+    cacheBustingUrl;
+
+  request = new Request(url,
+    {cache: 'reload'}
+  );
+
+  if ('cache' in request) {
+    return request;
+  }
+
+  cacheBustingUrl = new URL(url, self.location.href);
+  cacheBustingUrl.search += (cacheBustingUrl.search ? '&' : '') + 'cachebust=' + Date.now();
+
+  return new Request(cacheBustingUrl);
+}
