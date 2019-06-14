@@ -5,4 +5,5 @@ function getItem() {
     localStorage.setItem('item-test', item);
   }
   return item;
+  document.getElementById('LS-item').innerHTML += item;
 }
