@@ -6,6 +6,8 @@
 </head>
 <body>
   <p>Registration status: <strong id="status"></strong></p>
+  <button onclick="getItem()">Add to LocalStorage</button>
+  <p id="LS-item">LocalStorage item: </p>
 
   <script>
     if ('serviceWorker' in navigator) {
