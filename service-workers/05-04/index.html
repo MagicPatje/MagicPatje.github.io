@@ -9,6 +9,7 @@
   <button onclick="getItem()">Add to LocalStorage</button>
   <p id="LS-item">LocalStorage item: </p>
 
+  <script src="index.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register(
@@ -23,6 +24,7 @@
         document.getElementById('status').innerHTML = 'unavailable';
       }
   </script>
+  
 </body>
 </html>
 © 2019 GitHub, Inc.
