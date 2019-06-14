@@ -11,7 +11,8 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(currentCache.offline).then(function(cache) {
       return cache.addAll([
-        offlineUrl
+        offlineUrl,
+        'index.js'
         // Here you can put all the files you need to be cached. Formatted: 'offline.html', 'test.js', 'css/style.css'
       ]);
     })
