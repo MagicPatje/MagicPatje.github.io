@@ -5,7 +5,11 @@ function getItem() {
     localStorage.setItem('item-test', item);
     console.log ("Item in if: " + item);
   }
-  return item;
+  //return item;
   console.log ("Return: " + item);
   document.getElementById('LS-item').innerHTML += item;
+}
+
+function removeItem(){
+  localStorage.removeItem("item-test"); 
 }
