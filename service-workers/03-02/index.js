@@ -1,7 +1,7 @@
 'use strict';
 
 var CACHE_NAME = 'cache-and-then-network';
-var SOURCE_URL = 'https://cdn.rawgit.com/szaranger/szaranger.github.io/master/service-workers/03/02/events';
+var SOURCE_URL = 'https://magicpatje.github.io/service-workers/03-02/events';
 var cacheDelayText = document.getElementById('cache-delay');
 var cacheDisabledCheckbox = document.getElementById('cache-disabled-checkbox');
 var networkDelayText  = document.getElementById('network-delay');
