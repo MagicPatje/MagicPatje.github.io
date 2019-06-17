@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Offline Page</title>
+</head>
+<body>
+  <p>Registration status: <strong id="status"></strong></p>
+  <button onclick="getItem()">Add to LocalStorage</button>
+  <p id="LS-item">LocalStorage item: </p>
+  <button onclick="removeItem()">Remove item from LocalStorage</button>
+  <p>Date: <span id="Time"></span></p>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register(
+        'service-worker.js',
+        { scope: './' }
+      ).then( function(serviceWorker) {
+        document.getElementById('status').innerHTML = 'successful';
+      }).catch(function(error) {
+        document.getElementById('status').innerHTML = error;
+      });
+    } else {
+        document.getElementById('status').innerHTML = 'unavailable';
+      }
+  </script>
+  
+</body>
+</html>
