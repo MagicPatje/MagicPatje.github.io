@@ -13,7 +13,7 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         offlineUrl,
         'script.js',
-        'offline.html'
+        'index.html'
         // Here you can put all the files you need to be cached. Formatted: 'offline.html', 'test.js', 'css/style.css'
       ]);
     })
