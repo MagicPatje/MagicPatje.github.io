@@ -28,6 +28,7 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(createRequestWithCacheBusting(request.url)).catch(function(error) {
         console.log('OFFLINE: Returning offline page.', error);
+        console.log(offlineUrl);
         return caches.match(offlineUrl);
       })
     );
