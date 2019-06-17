@@ -13,3 +13,5 @@ function getItem() {
 function removeItem(){
   localStorage.removeItem("item-test"); 
 }
+var timeStamp = "17-6-2019";
+document.getElementById('Time').innerHTML = timeStamp;
