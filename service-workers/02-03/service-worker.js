@@ -1,20 +1,22 @@
 var version = 1;
 var cacheName = 'static-' + version;
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', installHandler);
+self.addEventListener('fetch', fetchHandler);
+
+function installHandler(event) {
     event.waitUntil(
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
-                'http://fonts.ft.com/serif',
-                'http://fonts.ft.com/sans-serif'
+              'index.html',
+              'style-2.css'
             ]);
         })
     );
-});
+}
 
-self.addEventListener('fetch', function(event) {
-
+function fetchHandler(event) {
   if (/index/.test(event.request.url) || /style-2/.test(event.request.url)) {
     event.respondWith(caches.match(event.request));
   }
-});
+}
