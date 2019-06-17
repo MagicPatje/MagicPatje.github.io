@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Offline</title>
+  <style>
+    #container {
+      text-align: center;
+      margin-top: 40px;
+    }
+    #container img {
+      width: 80px;
+      height: 80px;
+    }
+  </style>
+  <script src="./script.js"></script>
+
+ </head>
+ <body>
+   <div id="container">
+     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+       <path d="M16 0l-3 9h9l-1.866 2h-14.4L16 0zm2.267 13h-14.4L2 15h9l-3 9 10.267-11z" fill="#04b8b8"/>
+     </svg>
+     <p>Whoops, something went wrong...!</p>
+     <p>Your internet connection is not working.</p>
+     <p>Please check your internet connection and try again.</p>
+   <div>
+    <div>
+      <button onclick="getItem()">Add to LocalStorage</button>
+      <p id="LS-item">LocalStorage item: </p>
+      <p>Date: <span id="Time"></span></p>
+    </div>
+    
+      <script>function getItem() {
+  var item = localStorage.getItem('item-test');
+  if (!item) {
+    item = '' + Date.now() + '-' + Math.random();
+    localStorage.setItem('item-test', item);
+    console.log ("Item in if: " + item);
+  }
+  //return item;
+  console.log ("Return: " + item);
+  document.getElementById('LS-item').innerHTML += item;
+}
+function removeItem(){
+  localStorage.removeItem("item-test"); 
+}
+var timeStamp = "17-6-2019";
+document.getElementById('Time').innerHTML = timeStamp;</script>
+  </body>
+</html>
