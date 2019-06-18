@@ -40,7 +40,7 @@
         var onOff = navigator.onLine ? "Online" : "Offline";
         var element = document.getElementById('OnOff');
        
-        element.className = onOff;
+        document.getElementById('container').className = onOff;
         element.innerHTML = onOff;
       }
       window.addEventListener('Online',  updateOnlineStatus);
