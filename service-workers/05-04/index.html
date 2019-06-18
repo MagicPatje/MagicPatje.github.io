@@ -35,19 +35,30 @@
         document.getElementById('status').innerHTML = 'unavailable';
       }
     
-    var onOff = "?";
-    if(navigator.onLine = true){
-      document.getElementById('OnOff').classList.remove('Offline');
-      onOff = "Online";
-      document.getElementById('OnOff').classList.add(onOff);
-    } else {
-      document.getElementById('OnOff').classList.remove('Online');
-      onOff = "Offline";
-      document.getElementById('OnOff').classList.add(onOff);
+//     var onOff = "?";
+//     if(navigator.onLine = true){
+//       document.getElementById('OnOff').classList.remove('Offline');
+//       onOff = "Online";
+//       document.getElementById('OnOff').classList.add(onOff);
+//     } else {
+//       document.getElementById('OnOff').classList.remove('Online');
+//       onOff = "Offline";
+//       document.getElementById('OnOff').classList.add(onOff);
       
-    }
+//     }
     
-    document.getElementById('OnOff').innerHTML = onOff;
+//     document.getElementById('OnOff').innerHTML = onOff;
+    window.addEventListener('load', function() {
+      function updateOnlineStatus(event) {
+        var onOff = navigator.onLine ? "Online" : "Offline";
+        var element = document.getElementById('OnOff');
+       
+        element.className = onOff;
+        element.innerHTML = onOff;
+      }
+      window.addEventListener('Online',  updateOnlineStatus);
+      window.addEventListener('Offline', updateOnlineStatus);
+    });
     
   </script>
   
