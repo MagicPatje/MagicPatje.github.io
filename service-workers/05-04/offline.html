@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>Offline</title>
   <link rel="canonical" href="https://magicpatje.github.io/service-workers/05-04/" />
-  <link rel="stylesheet" href="style2.css" />
-  <link rel="stylesheet" href="style1.css" />
   <style>
     #container {
       text-align: center;
@@ -35,19 +33,6 @@
       <p>Date: <span id="Time"></span> <strong><span id="OnOff"></span></strong></p>
     </div>
 
-  <script src="script.js"></script>
-  <script>  
-    window.addEventListener('load', function() {
-      function updateOnlineStatus(event) {
-        var onOff = navigator.onLine ? "Online" : "Offline";
-        var element = document.getElementById('OnOff');
-       
-        document.getElementById('container').className = onOff;
-        element.innerHTML = onOff;
-      }
-      window.addEventListener('Online',  updateOnlineStatus);
-      window.addEventListener('Offline', updateOnlineStatus);
-    });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
