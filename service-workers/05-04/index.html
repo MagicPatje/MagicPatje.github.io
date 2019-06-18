@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <title>Custom Offline Page</title>
   <link rel="canonical" href="https://magicpatje.github.io/service-workers/05-04/" />
+  <style>
+    .Online{
+      color: green;
+    }
+    .Offline{
+      color: red;
+    }
+  </style>
 </head>
 <body>
   <p>Registration status: <strong id="status"></strong></p>
   <button onclick="getItem()">Add to LocalStorage</button>
   <p>LocalStorage item: <span id="LS-item"></span></p>
   <button onclick="removeItem()">Remove item from LocalStorage</button>
-  <p>Date: <span id="Time"></span></p>
+  <p>Date: <span id="Time"></span> <strong><span id="OnOff"></span></strong></p>
 
   <script src="script.js"></script>
   <script>
@@ -26,6 +34,16 @@
     } else {
         document.getElementById('status').innerHTML = 'unavailable';
       }
+    
+    var onOff = "?";
+    if(navigator.onLine){
+      onOff = Online
+    } else {
+      onOff = Offline
+    }
+    
+    document.getElementById('OnOff').innterHTML = onOff;
+    document.getElementById('OnOff').addClass = onOff;
   </script>
   
 </body>
