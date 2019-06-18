@@ -13,6 +13,8 @@
       width: 80px;
       height: 80px;
     }
+   .Online{ color: green; }
+   .Offline{ color: red; }
   </style>
  </head>
  
@@ -28,8 +30,21 @@
     <div>
       <button onclick="getItem()">Add to LocalStorage</button>
       <p id="LS-item">LocalStorage item: </p>
-      <p>Date: <span id="Time"></span></p>
+      <p>Date: <span id="Time"></span> <strong><span id="OnOff"></span></strong></p>
     </div>
-    <script src="script.js"></script>
+
+  <script src="script.js"></script>
+  <script>  
+    var onOff = "?";
+    if(navigator.onLine = true){
+      document.getElementById('OnOff').classList.remove('Offline');
+      onOff = "Online";
+      document.getElementById('OnOff').classList.add(onOff);
+    } else {
+      document.getElementById('OnOff').classList.remove('Online');
+      onOff = "Offline";
+      document.getElementById('OnOff').classList.add(onOff);
+    }
+    document.getElementById('OnOff').innerHTML = onOff;
   </body>
 </html>
