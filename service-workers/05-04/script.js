@@ -7,11 +7,12 @@ function getItem() {
   }
   //return item;
   console.log ("Return: " + item);
-  document.getElementById('LS-item').innerHTML += item;
+  document.getElementById('LS-item').innerHTML = item;
 }
 
 function removeItem(){
   localStorage.removeItem("item-test"); 
+  document.getElementById('LS-item').innerHTML = "";
 }
 var timeStamp = "17-6-2019";
 document.getElementById('Time').innerHTML = timeStamp;
