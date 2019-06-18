@@ -36,14 +36,19 @@
       }
     
     var onOff = "?";
-    if(navigator.onLine){
+    if(navigator.onLine = true){
+      document.getElementById('OnOff').classList.remove('Offline');
       onOff = "Online";
+      document.getElementById('OnOff').classList.add(onOff);
     } else {
+      document.getElementById('OnOff').classList.remove('Online');
       onOff = "Offline";
+      document.getElementById('OnOff').classList.add(onOff);
+      
     }
     
-    document.getElementById('OnOff').innterHTML = onOff;
-    document.getElementById('OnOff').addClass = onOff;
+    document.getElementById('OnOff').innerHTML = onOff;
+    
   </script>
   
 </body>
