@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Custom Offline Page</title>
+  <link rel="canonical" href="https://magicpatje.github.io/service-workers/05-04/" />
 </head>
 <body>
   <p>Registration status: <strong id="status"></strong></p>
@@ -15,8 +16,8 @@
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register(
-        'service-worker.js',
-        { scope: './' }
+        '/service-workers/05-04/service-worker.js',
+        { scope: '/service-workers/05-04/' }
       ).then( function(serviceWorker) {
         document.getElementById('status').innerHTML = 'successful';
       }).catch(function(error) {
